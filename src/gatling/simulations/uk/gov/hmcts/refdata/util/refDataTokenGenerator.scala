@@ -1,5 +1,6 @@
 package uk.gov.hmcts.refdata.util
 
+import com.oracle.jrockit.jfr.ContentType
 import com.typesafe.config.ConfigFactory
 import io.gatling.http.Predef.Proxy
 import io.gatling.http.request.builder.HttpRequestBuilder
@@ -12,6 +13,7 @@ import io.restassured.http.ContentType
 import io.restassured.response.Response
 import io.restassured.specification.RequestSpecification
 import com.warrenstrange.googleauth.GoogleAuthenticator
+
 import scala.util.parsing.json.JSONObject
 
 package object refDataTokenGenerator {
@@ -65,7 +67,7 @@ package object refDataTokenGenerator {
     val authCodeRequest = RestAssured.given().config(RestAssured.config()
       .encoderConfig(EncoderConfig.encoderConfig()
         .encodeContentTypeAs("x-www-form-urlencoded",
-          ContentType.URLENC)))
+          `ContentType`.URLENC)))
       .contentType("application/x-www-form-urlencoded; charset=UTF-8")
       .proxy("proxyout.reform.hmcts.net", 8080)
       .formParam("username", userName)
