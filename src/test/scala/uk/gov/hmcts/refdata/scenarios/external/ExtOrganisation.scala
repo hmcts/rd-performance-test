@@ -55,7 +55,7 @@ object ExtOrganisation {
       ("AddressLine1",addressLine1())
     ))
 
-    .exec(http("TC01_ReferenceData_CreateOrganization")
+    .exec(http("RD01_CreateOrganization")
       .post("/refdata/external/v1/organisations")
       .header("ServiceAuthorization", s2sToken)
       .body(StringBody(createOrgString))
@@ -65,7 +65,7 @@ object ExtOrganisation {
     .pause(15 seconds, 25 seconds)
 
 
-  val GETAllOrganisation = exec(http("TC03_ReferenceData_External_GetAllOrganizations")
+  val GETAllOrganisation = exec(http("RD02_External_GetAllOrganizations")
         .get("/refdata/external/v1/organisations")
       .header("ServiceAuthorization", s2sToken)
       .header("Authorization", IdAMToken)
@@ -73,7 +73,7 @@ object ExtOrganisation {
       .check(status is 200))
     .pause(15 seconds, 25 seconds)
 
-  val GETOrganisationByID = exec(http("TC12_ReferenceData_External_GetOrganizationsByID")
+  val GETOrganisationByID = exec(http("RD12_External_GetOrganizationsByID")
     .get("/refdata/external/v1/organisations")
     .header("ServiceAuthorization", s2sToken)
     .header("Authorization", IdAMToken)
@@ -81,7 +81,7 @@ object ExtOrganisation {
     .check(status is 200))
     .pause(15 seconds, 25 seconds)
 
-  val GETOrganisationsByStatusACTIVE = exec(http("TC05_ReferenceData_External_GetOrganizationsByStatusACTIVE")
+  val GETOrganisationsByStatusACTIVE = exec(http("RD05_External_GetOrganizationsByStatusACTIVE")
     .get("/refdata/external/v1/organisations?status=ACTIVE")
     .header("ServiceAuthorization", s2sToken)
     .header("Authorization", IdAMToken)
@@ -89,7 +89,7 @@ object ExtOrganisation {
     .check(status is 200))
     .pause(15 seconds, 25 seconds)
 
-  val GETOrganisationsByStatusPENDING = exec(http("TC06_ReferenceData_External_GetOrganizationsByStatusPENDING")
+  val GETOrganisationsByStatusPENDING = exec(http("RD06_External_GetOrganizationsByStatusPENDING")
     .get("/refdata/external/v1/organisations?status=PENDING")
     .header("ServiceAuthorization", s2sToken)
     .header("Authorization", IdAMToken)
@@ -97,7 +97,7 @@ object ExtOrganisation {
     .check(status is 200))
     .pause(15 seconds, 25 seconds)
 
-  val GETPbas = exec(http("TC13_ReferenceData_External_Retrieves_Organisations_payment_accounts")
+  val GETPbas = exec(http("RD13_External_RetrieveOrganisationsPaymentAccounts")
     .get("/refdata/external/v1/organisations/pbas?email=kapil.z5h9ry8yzxi2tdw@gmail.com")
       .header("ServiceAuthorization", s2sToken)
       .header("Authorization", IdAMToken)
@@ -113,7 +113,7 @@ object ExtOrganisation {
           ))
 
 
-      .exec(http("TC14_ReferenceData_External_AddInternalUserToOrganisation")
+      .exec(http("RD14_External_AddInternalUserToOrganisation")
         .post("/refdata/external/v1/organisations/users/")
         .header("ServiceAuthorization", s2sToken)
         .header("Authorization", IdAMToken)
@@ -123,7 +123,7 @@ object ExtOrganisation {
   }
     .pause(3 seconds, 5 seconds)
 
-  val GETInternalUserForGivenOrganisations = exec(http("TC15_ReferenceData_External_GetInternalUserForGivenOrganisation")
+  val GETInternalUserForGivenOrganisations = exec(http("RD15_External_GetInternalUserForGivenOrganisation")
     .get("/refdata/external/v1/organisations/users?showdeleted=True")
     .header("ServiceAuthorization", s2sToken)
     .header("Authorization", IdAMToken)
@@ -131,7 +131,7 @@ object ExtOrganisation {
     .check(status is 200))
     .pause(15 seconds, 25 seconds)
 
-  val GETInternalUserForActiveOrganisationByEmail = exec(http("TC16_ReferenceData_External_GetInternalUserForActiveOrganisationByEmailAddress")
+  val GETInternalUserForActiveOrganisationByEmail = exec(http("RD16_External_GetInternalUserForActiveOrganisationByEmailAddress")
       .get("/refdata/external/v1/organisations/users?email=" + "tpalzz3balrmkbr0fa@email.co.uk" + "")
       .header("ServiceAuthorization", s2sToken)
       .header("Authorization", IdAMToken)
@@ -139,7 +139,7 @@ object ExtOrganisation {
       .check(status is 200))
     .pause(15 seconds, 25 seconds)
 
-  val SearchPbas = exec(http("TC17_ReferenceData_External_SearchPBAsByEmailAddress")
+  val SearchPbas = exec(http("RD17_External_SearchPBAsByEmailAddress")
     .get("/search/pba/tpalzz3balrmkbr0fa@email.co.uk")
     .header("ServiceAuthorization", s2sToken)
     .header("Authorization", IdAMToken)

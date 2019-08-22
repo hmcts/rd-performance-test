@@ -66,7 +66,7 @@ object Organisation {
       ("AddressLine1",addressLine1())
     ))
 
-    .exec(http("TC01_ReferenceData_Internal_CreateOrganization")
+    .exec(http("RD01_Internal_CreateOrganization")
       .post("/refdata/internal/v1/organisations")
       .header("ServiceAuthorization", s2sToken)
       .body(StringBody(createOrgString))
@@ -89,7 +89,7 @@ object Organisation {
 
     .feed(OrgIdData)
 
-    .exec(http("TC02_ReferenceData_Internal_ActivateOrganization")
+    .exec(http("RD02_Internal_ActivateOrganization")
       .put("/refdata/internal/v1/organisations/${NewPendingOrg_Id}")
       .header("ServiceAuthorization", s2sToken)
       .header("Authorization", IdAMToken)
@@ -99,7 +99,7 @@ object Organisation {
     .pause(15 seconds, 25 seconds)
 
 
-  val GETAllOrganisation = exec(http("TC03_ReferenceData_Internal_GetAllOrganizations")
+  val GETAllOrganisation = exec(http("RD03_Internal_GetAllOrganizations")
         .get("/refdata/internal/v1/organisations")
       .header("ServiceAuthorization", s2sToken)
       .header("Authorization", IdAMToken)
@@ -109,7 +109,7 @@ object Organisation {
 
   val GETOrganisationByID = feed(OrgIdData)
 
-    .exec(http("TC04_ReferenceData_Internal_GetOrganizationsByID")
+    .exec(http("RD04_Internal_GetOrganizationsByID")
     .get("/refdata/internal/v1/organisations?id=${NewPendingOrg_Id}")
     .header("ServiceAuthorization", s2sToken)
     .header("Authorization", IdAMToken)
@@ -117,7 +117,7 @@ object Organisation {
     .check(status is 200))
     .pause(15 seconds, 25 seconds)
 
-  val GETOrganisationsByStatusACTIVE = exec(http("TC05_ReferenceData_Internal_GetOrganizationsByStatusACTIVE")
+  val GETOrganisationsByStatusACTIVE = exec(http("RD05_Internal_GetOrganizationsByStatusACTIVE")
     .get("/refdata/internal/v1/organisations?status=ACTIVE")
     .header("ServiceAuthorization", s2sToken)
     .header("Authorization", IdAMToken)
@@ -125,7 +125,7 @@ object Organisation {
     .check(status is 200))
     .pause(15 seconds, 25 seconds)
 
-  val GETOrganisationsByStatusPENDING = exec(http("TC06_ReferenceData_Internal_GetOrganizationsByStatusPENDING")
+  val GETOrganisationsByStatusPENDING = exec(http("RD06_Internal_GetOrganizationsByStatusPENDING")
     .get("/refdata/internal/v1/organisations?status=PENDING")
     .header("ServiceAuthorization", s2sToken)
     .header("Authorization", IdAMToken)
@@ -133,7 +133,7 @@ object Organisation {
     .check(status is 200))
     .pause(15 seconds, 25 seconds)
 
-  val GETPbas = exec(http("TC07_ReferenceData_Internal_RetrievesOrganisationsPaymentAccounts")
+  val GETPbas = exec(http("RD07_Internal_RetrievesOrganisationsPaymentAccounts")
     .get("/refdata/internal/v1/organisations/pbas?email=tpanw2pyresecivwmz@email.co.uk")
       .header("ServiceAuthorization", s2sToken)
       .header("Authorization", IdAMToken)
@@ -150,7 +150,7 @@ object Organisation {
 
       .feed(OrgIdData)
 
-      .exec(http("TC08_ReferenceData_Internal_AddInternalUserToOrganisation")
+      .exec(http("RD08_Internal_AddInternalUserToOrganisation")
         .post("/refdata/internal/v1/organisations/${NewPendingOrg_Id}/users/")
         .header("ServiceAuthorization", s2sToken)
         .header("Authorization", IdAMToken)
@@ -162,7 +162,7 @@ object Organisation {
 
   val GETInternalUserForGivenOrganisations = feed(OrgIdData)
 
-    .exec(http("TC09_ReferenceData_Internal_GetInternalUserForGivenOrganisation")
+    .exec(http("RD09_Internal_GetInternalUserForGivenOrganisation")
     .get("/refdata/internal/v1/organisations/${NewPendingOrg_Id}/users?showdeleted=True")
     .header("ServiceAuthorization", s2sToken)
     .header("Authorization", IdAMToken)
@@ -170,7 +170,7 @@ object Organisation {
     .check(status is 200))
     .pause(15 seconds, 25 seconds)
 
-  val GETInternalUserForActiveOrganisationByEmail = exec(http("TC10_ReferenceData_Internal_GetInternalUserForActiveOrganisationByEmailAddress")
+  val GETInternalUserForActiveOrganisationByEmail = exec(http("RD10_Internal_GetInternalUserForActiveOrganisationByEmailAddress")
       .get("/refdata/internal/v1/organisations/${NewPendingOrg_Id}/users?email=" + "test_user0108@gmail.com" + "")
       .header("ServiceAuthorization", s2sToken)
       .header("Authorization", IdAMToken)
@@ -178,7 +178,7 @@ object Organisation {
       .check(status is 200))
     .pause(15 seconds, 25 seconds)
 
-  val SearchPbas = exec(http("TC11_ReferenceData_Internal_SearchPBAsByEmailAddress")
+  val SearchPbas = exec(http("RD11_Internal_SearchPBAsByEmailAddress")
     .get("/search/pba/tpabsya3pt3o8w0qtg@email.co.uk")
     .header("ServiceAuthorization", s2sToken)
     .header("Authorization", IdAMToken)
