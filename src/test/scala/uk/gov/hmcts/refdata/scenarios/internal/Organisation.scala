@@ -5,6 +5,7 @@ import com.warrenstrange.googleauth.GoogleAuthenticator
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import uk.gov.hmcts.refdata.util.refDataTokenGenerator
+
 import scala.util.Random
 import scala.concurrent.duration._
 

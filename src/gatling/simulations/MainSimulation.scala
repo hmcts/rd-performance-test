@@ -2,6 +2,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import com.warrenstrange.googleauth.GoogleAuthenticator
+
 import uk.gov.hmcts.refdata.util._
 
 class MainSimulation extends Simulation {
