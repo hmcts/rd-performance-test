@@ -1,18 +1,11 @@
 package uk.gov.hmcts.refdata.util
 
+//import com.oracle.jrockit.jfr.ContentType
 import com.typesafe.config.ConfigFactory
-import io.gatling.http.Predef.Proxy
-import io.gatling.http.request.builder.HttpRequestBuilder
-import io.gatling.core.Predef._
-import io.gatling.core.structure.ChainBuilder
-import io.gatling.http.Predef._
+import com.warrenstrange.googleauth.GoogleAuthenticator
 import io.restassured.RestAssured
 import io.restassured.config.EncoderConfig
 import io.restassured.http.ContentType
-import io.restassured.response.Response
-import io.restassured.specification.RequestSpecification
-import com.warrenstrange.googleauth.GoogleAuthenticator
-import scala.util.parsing.json.JSONObject
 
 package object refDataTokenGenerator {
 
@@ -36,7 +29,7 @@ package object refDataTokenGenerator {
     val jsonPayload: String = """{"microservice":"""" + config.getString("service.name") + """","oneTimePassword":"""" + password + """"}"""
 
 
-    val s2sRequest = RestAssured.given
+    val s2sRequest = RestAssured.given()
       .contentType("application/json")
       .accept("application/json")
       .proxy("proxyout.reform.hmcts.net", 8080)

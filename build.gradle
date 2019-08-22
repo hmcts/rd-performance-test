@@ -40,18 +40,13 @@ ScalaCompileOptions.metaClass.useCompileDaemon = false
 dependencies {
     compile 'org.scala-lang:scala-library:2.12.8'
     compile 'com.warrenstrange:googleauth:1.1.2'
+    gatlingCompile 'io.rest-assured:rest-assured:4.0.0'
+    gatlingCompile 'org.testng:testng:6.9.10'
 
-    //testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.0'
-  //  testCompile 'io.rest-assured:rest-assured:3.1.0'
-//    compile group: 'io.rest-assured', name: 'scala-support', version: '4.0.0'
-    //compile group: 'io.rest-assured', name: 'rest-assured', version: '4.0.0'
-    testCompile 'io.rest-assured:rest-assured:3.0.0'
-    testCompile 'org.testng:testng:6.9.10'
-    compile 'org.codehaus.groovy:groovy-all:2.4.5'
-    
     gatlingCompile 'com.warrenstrange:googleauth:1.1.5'
     compile group: 'io.gatling', name: 'gatling-app', version: '3.2.0'
-
+    compile 'org.codehaus.groovy:groovy-all:2.4.5'
+    
     compile group: 'io.gatling', name: 'gatling-recorder', version: '3.2.0'
     compile group: 'io.gatling.highcharts', name: 'gatling-charts-highcharts', version: '3.2.0'
 
