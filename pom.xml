@@ -9,7 +9,7 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <scala.version>2.12.8</scala.version>
+    <scala.version>2.13.4</scala.version>
     <encoding>UTF-8</encoding>
 
     <gatling.version>3.1.2</gatling.version>
