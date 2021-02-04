@@ -12,7 +12,7 @@
     <scala.version>2.12.8</scala.version>
     <encoding>UTF-8</encoding>
 
-    <gatling.version>3.1.2</gatling.version>
+    <gatling.version>3.5.0</gatling.version>
 
     <scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
     <gatling-maven-plugin.version>3.0.1</gatling-maven-plugin.version>
